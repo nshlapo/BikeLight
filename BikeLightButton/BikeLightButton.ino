@@ -53,6 +53,7 @@ void loop() {
       break;
 
     case 1:
+    case 5:
       digitalWrite(ledY1, LOW);    //yellow off
       digitalWrite(ledY2, LOW);
 
@@ -69,6 +70,7 @@ void loop() {
       break;
 
     case 2:
+    case 4:
       digitalWrite(ledR1, HIGH);   // red on
       digitalWrite(ledR2, HIGH);
 
@@ -90,40 +92,6 @@ void loop() {
       digitalWrite(ledR1, HIGH);
       digitalWrite(ledR2, HIGH);
       break;
-
-    case 5:
-      digitalWrite(ledY1, LOW);    //yellow off
-      digitalWrite(ledY2, LOW);
-
-      if (time%(2*blinkTime) < (1.5*blinkTime)) {      //red flashing
-        digitalWrite(ledR1, HIGH);
-        digitalWrite(ledR2, HIGH);
-      }
-
-      else {
-      digitalWrite(ledR1, LOW);
-      digitalWrite(ledR2, LOW);
-      }
-
-      break;
-
-    case 4:
-      digitalWrite(ledR1, HIGH);   // red on
-      digitalWrite(ledR2, HIGH);
-
-      if (time%(2*blinkTime) < (1.5*blinkTime)) {      // yelow flashing
-        digitalWrite(ledY1, HIGH);
-        digitalWrite(ledY2, HIGH);
-      }
-
-      else {
-        digitalWrite(ledY1, LOW);
-        digitalWrite(ledY2, LOW);
-      }
-
-      break;
   }
   prevState = buttonState; // check if button was released
 }
-
-
