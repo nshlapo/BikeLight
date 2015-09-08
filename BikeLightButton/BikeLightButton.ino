@@ -11,7 +11,7 @@ int ledR1 = 11;
 int ledR2 = 6;
 int ledY1 = 10;
 int ledY2 = 9;
-int button = 8;
+int button = 2;
 
 unsigned long time;
 int count = 0;
