@@ -1,18 +1,16 @@
-
  /*
-  Blink
-  Turns on an LED on for one second, then off for one second, repeatedly.
-
-  This example code is in the public domain.
+  BikeLight
+  Different LED patterns execute based on the state defined by button presses.
  */
 
-// Define pin numbers
+// define pin numbers
 int ledR1 = 11;
 int ledR2 = 6;
 int ledY1 = 10;
 int ledY2 = 9;
 int button = 2;
 
+// initialize variables to be used later
 unsigned long time;
 int count = 0;
 int prevState = 0;
@@ -23,27 +21,26 @@ int timePressed = 0;
 int prevTimePress = 0;
 int blinkTime = 300;
 
-// the setup routine runs once when you press reset:
 void setup() {
-  // initialize the digital pin as an output.
+  // define pin modes
   pinMode(ledR1, OUTPUT);
   pinMode(ledR2, OUTPUT);
   pinMode(ledY1, OUTPUT);
   pinMode(ledY2, OUTPUT);
   pinMode(button, INPUT);
-  Serial.begin(9600);
 }
 
-// the loop routine runs over and over again forever:
 void loop() {
   buttonState = digitalRead(button);
   time = millis();
-    Serial.println(String(buttonState) + "//" + String(prevState) + "//" + String(count));
 
-  if(prevState == 1 && buttonState == 0) { //check for button press and release
+  // check for the release of the button
+  if(prevState == 1 && buttonState == 0) {
     count ++;
   }
 
+  // this switch case executes certain light patterns based on the number of
+  //times the button has been pressed
   switch(count%6) {
     case 0:                       // all off
       digitalWrite(ledY1, LOW);
@@ -93,5 +90,5 @@ void loop() {
       digitalWrite(ledR2, HIGH);
       break;
   }
-  prevState = buttonState; // check if button was released
+  prevState = buttonState; // define old button state to use in the next loop
 }
